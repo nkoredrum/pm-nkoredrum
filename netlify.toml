@@ -1,13 +1,17 @@
 [build]
+  base = "/"
+  publish = "/_site"
   command = "bundle exec jekyll build"
-  publish = "_site"
-  base = ""
 
-[context.production.environment]
+[build.environment]
   JEKYLL_ENV = "production"
+  JEKYLL_GITHUB_TOKEN = "${JEKYLL_GITHUB_TOKEN}"
 
-[context.deploy-preview.environment]
-  JEKYLL_ENV = "development"
+[context.production]
+  command = "bundle exec jekyll build"
 
-[context.split-testing.environment]
-  JEKYLL_ENV = "development"
+[context.deploy-preview]
+  command = "bundle exec jekyll build"
+
+[context.split-testing]
+  command = "bundle exec jekyll build"
