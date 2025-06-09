@@ -13,17 +13,6 @@ plugins:
   - jekyll-sitemap
   - netlify-cms-app
 
-# Netlify CMS settings
-netlify_cms:
-  identity:
-    provider: github
-    url: https://api.github.com
-  backend:
-    name: git-gateway
-    branch: main
-    base_url: ""
-    auth_endpoint: ""
-
 # Exclude from processing
 exclude:
   - Gemfile

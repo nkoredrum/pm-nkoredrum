@@ -1,17 +1,23 @@
 [build]
   base = "/"
   publish = "/_site"
-  command = "bundle exec jekyll build"
+  command = "powershell -File build.ps1"
+  functions = "netlify/functions"
 
 [build.environment]
   JEKYLL_ENV = "production"
   JEKYLL_GITHUB_TOKEN = "${JEKYLL_GITHUB_TOKEN}"
 
 [context.production]
-  command = "bundle exec jekyll build"
+  command = "powershell -File build.ps1"
 
 [context.deploy-preview]
-  command = "bundle exec jekyll build"
+  command = "powershell -File build.ps1"
 
 [context.split-testing]
-  command = "bundle exec jekyll build"
+  command = "powershell -File build.ps1"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
