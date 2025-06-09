@@ -5,14 +5,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # will be set by Netlify
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - netlify-cms-app
-
 # Exclude from processing
 exclude:
   - Gemfile
@@ -29,13 +21,6 @@ exclude:
   - __pycache__
   - .forestry
   - netlify.toml
-  - admin/index.html
-
-# Exclude from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
   - vendor
   - README.md
   - .gitignore
