@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+        <p class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+                {{ page.date | date: date_format }}
+            </time>
+            {% if page.author %}
+                • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name">{{ page.author }}</span>
+                </span>
+            {% endif %}
+            {% if page.categories.size > 0 %}
+                • <span class="post-categories">
+                    {% for category in page.categories %}
+                        <a href="{{ '/category/' | append: category | relative_url }}">{{ category }}</a>
+                        {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                </span>
+            {% endif %}
+        </p>
+    </header>
+
+    <div class="post-content" itemprop="articleBody">
+        {% if page.image %}
+            <div class="post-featured-image">
+                <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+                {% if page.image_caption %}
+                    <p class="image-caption">{{ page.image_caption }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        
+        {{ content }}
+    </div>
+
+    {% if site.disqus.shortname %}
+        {% include disqus_comments.html %}
+    {% endif %}
+
+    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

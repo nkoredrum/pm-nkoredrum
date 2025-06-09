@@ -1,0 +1,23 @@
+---
+layout: default
+title: Home
+---
+
+<div class="home">
+  <h1>Welcome to {{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+  
+  <h2>Latest Posts</h2>
+  <ul class="post-list">
+    {% for post in site.posts limit:5 %}
+      <li>
+        <h3>
+          <a href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

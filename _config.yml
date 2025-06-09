@@ -1,0 +1,28 @@
+# Site settings
+title: Nkore Drum
+description: >- # this means to ignore newlines until "baseurl:"
+  A digital storytelling blog documenting the rich culture, stories, and development of Western Uganda.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://localhost:4000" # the base hostname & protocol for your site
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .gitignore
+  - .sass-cache
+  - .jekyll-cache
+  - .bundle
+  - .idea
+  - .vscode
+  - __pycache__

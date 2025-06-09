@@ -1,0 +1,261 @@
+// Base styles
+// ==================================================
+
+// Box sizing rules
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margin and padding
+body,
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, dl,
+figure, figcaption, blockquote,
+pre, code,
+hr,
+fieldset, legend,
+table, th, td, caption {
+  margin: 0;
+  padding: 0;
+}
+
+// Set core root defaults
+html {
+  font-size: $base-font-size;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+}
+
+// Set core body defaults
+body {
+  font-family: $font-primary;
+  font-size: 1rem;
+  line-height: $line-height;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-secondary;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: $spacing-unit;
+  color: $secondary-color;
+}
+
+h1 { 
+  font-size: 2.5rem; // 40px
+  @media (max-width: $breakpoint-md) {
+    font-size: 2rem; // 32px
+  }
+}
+
+h2 { 
+  font-size: 2rem; // 32px
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.75rem; // 28px
+  }
+}
+
+h3 { 
+  font-size: 1.75rem; // 28px
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.5rem; // 24px
+  }
+}
+
+h4 { 
+  font-size: 1.5rem; // 24px
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.25rem; // 20px
+  }
+}
+
+h5 { 
+  font-size: 1.25rem; // 20px
+}
+
+h6 { 
+  font-size: 1rem; // 16px
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// Paragraphs and text elements
+p {
+  margin-bottom: $spacing-unit;
+  max-width: 65ch;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: darken($primary-color, 15%);
+    text-decoration: underline;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-unit;
+  padding-left: $spacing-unit * 1.5;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-top: $spacing-xs;
+}
+
+// Images and media
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Forms
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+// Tables
+table {
+  width: 100%;
+  margin-bottom: $spacing-unit;
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  th,
+  td {
+    padding: $spacing-sm $spacing-unit;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+  
+  th {
+    font-weight: 600;
+    background-color: $light-gray;
+  }
+}
+
+// Code and preformatted text
+pre,
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+  background-color: $light-gray;
+  border-radius: $border-radius-sm;
+}
+
+pre {
+  padding: $spacing-unit;
+  overflow-x: auto;
+  margin-bottom: $spacing-unit;
+  
+  code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+code {
+  padding: 0.2em 0.4em;
+}
+
+// Blockquotes
+blockquote {
+  margin: 0 0 $spacing-unit;
+  padding: $spacing-unit $spacing-unit $spacing-unit ($spacing-unit * 1.5);
+  border-left: 4px solid $primary-color;
+  background-color: $light-gray;
+  font-style: italic;
+  
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Horizontal rule
+hr {
+  border: 0;
+  height: 1px;
+  background-color: $border-color;
+  margin: $spacing-unit 0;
+  clear: both;
+}
+
+// Accessibility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Print styles
+@media print {
+  body {
+    padding: 0.5cm;
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff;
+  }
+  
+  a {
+    text-decoration: underline;
+    
+    &[href^='http']::after {
+      content: ' (' attr(href) ')';
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+  }
+  
+  // Don't show links that are fragment identifiers,
+  // or use the `javascript:` pseudo protocol
+  a[href^='#']::after,
+  a[href^='javascript:']::after {
+    content: '';
+  }
+  
+  // Don't show images that are links to other pages
+  a > img {
+    display: none;
+  }
+}

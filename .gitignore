@@ -1,0 +1,46 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# System
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Build
+*.log
+*.pyc
+__pycache__/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+*.DS_Store
+Thumbs.db
+
+# Bundler
+.bundle/
+Gemfile.lock
+
+# Forestry
+.forestry/
+
+# Local development
+.env.local
+.env.*.local

@@ -1,0 +1,174 @@
+// Layout
+// ==================================================
+
+// Container
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
+  
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 ($spacing-unit * 2);
+  }
+}
+
+// Grid system
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $spacing-unit;
+  margin-bottom: $spacing-unit;
+  
+  &--gap-sm {
+    gap: $spacing-sm;
+  }
+  
+  &--gap-md {
+    gap: $spacing-md;
+  }
+  
+  &--gap-lg {
+    gap: $spacing-lg;
+  }
+  
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      grid-column: span $i;
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    @for $i from 1 through 12 {
+      .col-md-#{$i} {
+        grid-column: span $i;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    @for $i from 1 through 12 {
+      .col-sm-#{$i} {
+        grid-column: span $i;
+      }
+    }
+  }
+}
+
+// Flex utilities
+.flex {
+  display: flex;
+  
+  &--column {
+    flex-direction: column;
+  }
+  
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  
+  &--justify-between {
+    justify-content: space-between;
+  }
+  
+  &--justify-center {
+    justify-content: center;
+  }
+  
+  &--align-center {
+    align-items: center;
+  }
+  
+  &--align-end {
+    align-items: flex-end;
+  }
+}
+
+// Spacing utilities
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in (
+    0: 0,
+    1: $spacing-xs,
+    2: $spacing-sm,
+    3: $spacing-unit,
+    4: $spacing-md,
+    5: $spacing-lg,
+    6: $spacing-xl
+  ) {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    .#{$abbrev}t-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}r-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}b-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}l-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+// Display utilities
+.d-none { display: none !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+
+// Responsive display utilities
+@each $breakpoint in map-keys($breakpoints) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    .d-#{$breakpoint}-none { display: none !important; }
+    .d-#{$breakpoint}-inline { display: inline !important; }
+    .d-#{$breakpoint}-inline-block { display: inline-block !important; }
+    .d-#{$breakpoint}-block { display: block !important; }
+    .d-#{$breakpoint}-flex { display: flex !important; }
+    .d-#{$breakpoint}-grid { display: grid !important; }
+  }
+}
+
+// Text alignment
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+
+// Responsive text alignment
+@each $breakpoint in map-keys($breakpoints) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    .text-#{$breakpoint}-left { text-align: left !important; }
+    .text-#{$breakpoint}-right { text-align: right !important; }
+    .text-#{$breakpoint}-center { text-align: center !important; }
+    .text-#{$breakpoint}-justify { text-align: justify !important; }
+  }
+}
+
+// Visibility utilities
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+
+// Responsive visibility utilities
+@each $breakpoint in map-keys($breakpoints) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    .visible-#{$breakpoint} { visibility: visible !important; }
+    .invisible-#{$breakpoint} { visibility: hidden !important; }
+  }
+}
+
+// Print utilities
+@media print {
+  .d-print-none { display: none !important; }
+  .d-print-inline { display: inline !important; }
+  .d-print-inline-block { display: inline-block !important; }
+  .d-print-block { display: block !important; }
+  .d-print-flex { display: flex !important; }
+  .d-print-grid { display: grid !important; }
+}

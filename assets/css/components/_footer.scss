@@ -1,0 +1,238 @@
+// Footer Styles
+// ==================================================
+
+.site-footer {
+  background-color: $secondary-color;
+  color: white;
+  padding: $spacing-lg 0;
+  margin-top: $spacing-xl;
+  
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+  
+  .footer-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-unit;
+    margin-bottom: $spacing-lg;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .widget {
+    h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: $spacing-unit;
+      position: relative;
+      padding-bottom: $spacing-xs;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: $primary-color;
+      }
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        margin-bottom: $spacing-xs;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    
+    // About widget
+    &.widget_about {
+      p {
+        margin-bottom: $spacing-sm;
+      }
+      
+      .social-links {
+        display: flex;
+        gap: $spacing-sm;
+        margin-top: $spacing-unit;
+        
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: white;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background-color: $primary-color;
+            transform: translateY(-3px);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    
+    // Recent posts widget
+    &.widget_recent_entries {
+      .post-date {
+        display: block;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.25rem;
+      }
+    }
+    
+    // Tag cloud
+    &.widget_tag_cloud {
+      .tag-cloud-link {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem !important;
+        margin: 0 0.5rem 0.5rem 0;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: $spacing-unit;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    
+    p {
+      margin: 0;
+    }
+    
+    .footer-menu {
+      margin-top: $spacing-sm;
+      
+      ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+          margin: 0 $spacing-sm;
+          position: relative;
+          
+          &::after {
+            content: '•';
+            position: absolute;
+            right: -$spacing-sm;
+            color: rgba(255, 255, 255, 0.3);
+          }
+          
+          &:last-child {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Back to top button
+  .back-to-top {
+    position: fixed;
+    bottom: $spacing-unit;
+    right: $spacing-unit;
+    width: 40px;
+    height: 40px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-3px);
+    }
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .site-footer {
+    background-color: darken($secondary-color, 10%);
+    
+    .widget {
+      h3 {
+        color: white;
+      }
+      
+      &.widget_about {
+        .social-links {
+          a {
+            background-color: rgba(255, 255, 255, 0.15);
+            
+            &:hover {
+              background-color: $primary-color;
+            }
+          }
+        }
+      }
+      
+      &.widget_tag_cloud {
+        .tag-cloud-link {
+          background-color: rgba(255, 255, 255, 0.15);
+          
+          &:hover {
+            background-color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
