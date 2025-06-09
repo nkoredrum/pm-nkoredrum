@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+collections:
+  - name: "post"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "excerpt", widget: "text"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Category", name: "categories", widget: "list"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "page"
+    label: "Pages"
+    folder: "_pages"
+    create: true
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "excerpt", widget: "text"}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  - name: "podcast"
+    label: "Podcast Episodes"
+    folder: "_data/podcast"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Duration", name: "duration", widget: "string"}
+      - {label: "Guest", name: "guest", widget: "string"}
+      - {label: "Spotify URL", name: "spotify_url", widget: "string"}
+      - {label: "Transcript", name: "transcript", widget: "file", required: false}
+      - {label: "Image", name: "image", widget: "image", required: false}

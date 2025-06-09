@@ -3,7 +3,7 @@ title: Nkore Drum
 description: >- # this means to ignore newlines until "baseurl:"
   A digital storytelling blog documenting the rich culture, stories, and development of Western Uganda.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000" # the base hostname & protocol for your site
+url: "" # will be set by Netlify
 
 # Build settings
 theme: minima
@@ -11,6 +11,36 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - netlify-cms-app
+
+# Netlify CMS settings
+netlify_cms:
+  identity:
+    provider: github
+    url: https://api.github.com
+  backend:
+    name: git-gateway
+    branch: main
+    base_url: ""
+    auth_endpoint: ""
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .gitignore
+  - .sass-cache
+  - .jekyll-cache
+  - .bundle
+  - .idea
+  - .vscode
+  - __pycache__
+  - .forestry
+  - netlify.toml
+  - admin/index.html
 
 # Exclude from processing
 exclude:
