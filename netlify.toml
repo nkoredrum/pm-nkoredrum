@@ -1,7 +1,7 @@
 [build]
   base = "/"
   publish = "/_site"
-  command = "powershell -File build.ps1"
+  command = "pwsh -File build.ps1"
   functions = "netlify/functions"
 
 [build.environment]
@@ -9,13 +9,13 @@
   JEKYLL_GITHUB_TOKEN = "${JEKYLL_GITHUB_TOKEN}"
 
 [context.production]
-  command = "powershell -File build.ps1"
+  command = "pwsh -File build.ps1"
 
 [context.deploy-preview]
-  command = "powershell -File build.ps1"
+  command = "pwsh -File build.ps1"
 
 [context.split-testing]
-  command = "powershell -File build.ps1"
+  command = "pwsh -File build.ps1"
 
 [[redirects]]
   from = "/*"

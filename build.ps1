@@ -6,17 +6,21 @@ $env:JEKYLL_ENV = "production"
 
 # Clean up
 Write-Host "Cleaning up..."
-rm -rf _site
-rm -rf .jekyll-cache
+Remove-Item -Path _site -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path .jekyll-cache -Recurse -Force -ErrorAction SilentlyContinue
 
 # Build the site
 Write-Host "Building Jekyll site..."
-bundle exec jekyll build
-
-# Check if build was successful
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Jekyll build failed"
+try {
+    bundle exec jekyll build
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Jekyll build failed with exit code $LASTEXITCODE"
+        exit 1
+    }
+} catch {
+    Write-Error "An error occurred: $_"
     exit 1
 }
 
 Write-Host "Build completed successfully!"
+exit 0
