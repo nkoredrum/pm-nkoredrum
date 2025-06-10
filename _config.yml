@@ -1,9 +1,24 @@
 # Site settings
 title: Nkore Drum
+email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   A digital storytelling blog documenting the rich culture, stories, and development of Western Uganda.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # will be set by Netlify
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: "" # an empty string means all files
+    values:
+      layout: "default"
 
 # Exclude from processing
 exclude:
