@@ -1,7 +1,7 @@
 [build]
   base = "/"
   publish = "/_site"
-  command = "bundle exec jekyll build --trace && pwsh -File post-process.ps1"
+  command = "bundle exec jekyll build --trace"
   functions = "netlify/functions"
 
 [build.environment]
@@ -9,13 +9,13 @@
   JEKYLL_GITHUB_TOKEN = "${JEKYLL_GITHUB_TOKEN}"
 
 [context.production]
-  command = "bundle exec jekyll build --trace && pwsh -File post-process.ps1"
+  command = "bundle exec jekyll build --trace"
 
 [context.deploy-preview]
-  command = "bundle exec jekyll build --trace && pwsh -File post-process.ps1"
+  command = "bundle exec jekyll build --trace"
 
 [context.split-testing]
-  command = "bundle exec jekyll build --trace && pwsh -File post-process.ps1"
+  command = "bundle exec jekyll build --trace"
 
 [[redirects]]
   from = "/*"

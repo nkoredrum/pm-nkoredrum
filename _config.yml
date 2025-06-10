@@ -19,6 +19,10 @@ defaults:
       path: "" # an empty string means all files
     values:
       layout: "default"
+  - scope:
+      path: "pages" # path relative to the source directory
+    values:
+      layout: "home"
 
 # Exclude from processing
 exclude:
