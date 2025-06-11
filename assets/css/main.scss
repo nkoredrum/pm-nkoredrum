@@ -1,12 +1,21 @@
 // Import variables first
-@import 'variables';
+@import 'base/variables';
 
-// Import other SCSS partials
-@import 'base';
-@import 'layout';
-@import 'components/buttons';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/posts';
-@import 'components/syntax';
-@import 'components/utilities';
+// Import base styles
+@import 'base/base';
+
+// Import layout styles
+@import 'layout/layout';
+
+// Import component styles
+@import 'components/button';
+@import 'components/card';
+@import 'components/form';
+
+// Import page-specific styles
+@import 'pages/home';
+@import 'pages/post';
+@import 'pages/contact';
+
+// Import utilities
+@import 'base/utilities';

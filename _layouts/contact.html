@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<div class="contact-page">
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Get in Touch</h1>
+      <p>We'd love to hear from you! Whether you have a story to share, want to contribute, or just want to say hello, please don't hesitate to contact us.</p>
+    </div>
+  </section>
+
+  <main class="contact-main">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <h3>Location</h3>
+            <p>Kampala, Uganda</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📧</div>
+            <h3>Email</h3>
+            <p>contact@nkoredrum.com</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📱</div>
+            <h3>Phone</h3>
+            <p>+256 123 456 789</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form action="{{ '/contact/submit' | relative_url }}" method="POST" id="contact-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" name="name" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" name="subject" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" required rows="6" class="form-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+            </div>
+
+            <div class="form-message" id="form-message"></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <!-- Add Google Maps iframe or other map integration here -->
+      </div>
+
+      <div class="social-links">
+        <h3>Follow Us</h3>
+        <div class="social-links-container">
+          <a href="https://facebook.com/nkoredrum" class="social-link" target="_blank">Facebook</a>
+          <a href="https://twitter.com/nkoredrum" class="social-link" target="_blank">Twitter</a>
+          <a href="https://instagram.com/nkoredrum" class="social-link" target="_blank">Instagram</a>
+          <a href="https://youtube.com/nkoredrum" class="social-link" target="_blank">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

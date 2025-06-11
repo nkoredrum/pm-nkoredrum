@@ -3,24 +3,84 @@ layout: default
 ---
 
 <div class="home">
-  <h1 class="page-heading">{{ site.title }}</h1>
+  <section class="home-hero">
+    <div class="home-hero-content">
+      <h1 class="home-hero-title">{{ site.title }}</h1>
+      <p class="lead">{{ site.description }}</p>
+      <a href="{{ '/about' | relative_url }}" class="cta-button btn btn-primary btn-large">Learn More</a>
+    </div>
+  </section>
 
-  <p class="lead">{{ site.description }}</p>
+  <section class="home-features">
+    <div class="feature-card">
+      <div class="feature-icon">📢</div>
+      <h3 class="feature-title">News</h3>
+      <p class="feature-description">Stay updated with the latest news from Western Uganda</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎵</div>
+      <h3 class="feature-title">Music</h3>
+      <p class="feature-description">Discover traditional and contemporary music of Nkore</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3 class="feature-title">Culture</h3>
+      <p class="feature-description">Explore the rich cultural heritage of the region</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎭</div>
+      <h3 class="feature-title">Arts</h3>
+      <p class="feature-description">Experience the vibrant arts scene of Western Uganda</p>
+    </div>
+  </section>
 
-  <h2 class="post-list-heading">Latest Posts</h2>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        <p class="post-excerpt">{{ post.excerpt }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+  <section class="featured-stories">
+    <h2 class="section-title">Featured Stories</h2>
+    <div class="cards-grid">
+      {% for post in site.posts limit:3 %}
+        <article class="card featured">
+          {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="card-image">
+          {% endif %}
+          <div class="card-content">
+            <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="card-excerpt">{{ post.excerpt }}</p>
+            <div class="card-meta">
+              <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <span class="post-author">By {{ post.author }}</span>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  <section class="trending-section">
+    <h2 class="section-title">Trending Now</h2>
+    <div class="trending-grid">
+      {% for post in site.posts offset:3 limit:6 %}
+        <article class="card">
+          {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="card-image">
+          {% endif %}
+          <div class="card-content">
+            <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="card-excerpt">{{ post.excerpt }}</p>
+            <div class="card-meta">
+              <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <span class="post-author">By {{ post.author }}</span>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2 class="section-title">About Nkore Drum</h2>
+    <div class="about-content">
+      <p>Nkore Drum is a digital media platform dedicated to showcasing the rich cultural heritage, news, music, and arts of Western Uganda. We aim to preserve and promote the unique stories and traditions of the Nkore region through engaging content and modern storytelling.</p>
+      <a href="{{ '/about' | relative_url }}" class="btn btn-secondary btn-large">Read More</a>
+    </div>
+  </section>
 </div>

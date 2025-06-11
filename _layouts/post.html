@@ -4,31 +4,86 @@ layout: default
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
-        <p class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-                {{ page.date | date: date_format }}
-            </time>
-            {% if page.author %}
-                • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <span itemprop="name">{{ page.author }}</span>
-                </span>
+        <div class="post-hero">
+            {% if page.image %}
+                <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-image">
             {% endif %}
-            {% if page.categories.size > 0 %}
-                • <span class="post-categories">
-                    {% for category in page.categories %}
-                        <a href="{{ '/category/' | append: category | relative_url }}">{{ category }}</a>
-                        {% unless forloop.last %}, {% endunless %}
-                    {% endfor %}
+        </div>
+        <div class="post-meta-wrapper">
+            <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+            <div class="post-meta">
+                <span class="post-date">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+                        {{ page.date | date: date_format }}
+                    </time>
                 </span>
-            {% endif %}
-        </p>
+                {% if page.author %}
+                    <span class="post-author">• <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <span itemprop="name">{{ page.author }}</span>
+                    </span></span>
+                {% endif %}
+                {% if page.categories.size > 0 %}
+                    <span class="post-categories">• 
+                        {% for category in page.categories %}
+                            <a href="{{ '/category/' | append: category | relative_url }}" class="post-tag">{{ category }}</a>
+                            {% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
     </header>
 
     <div class="post-content" itemprop="articleBody">
-        {% if page.image %}
-            <div class="post-featured-image">
+        {% if page.quote %}
+            <blockquote class="post-quote">
+                <p class="post-quote-content">{{ page.quote }}</p>
+                {% if page.quote_author %}
+                    <cite class="post-quote-author">— {{ page.quote_author }}</cite>
+                {% endif %}
+            </blockquote>
+        {% endif %}
+
+        {{ content }}
+
+        {% if page.tags.size > 0 %}
+            <div class="post-tags">
+                <h3>Tags:</h3>
+                <div class="tags-list">
+                    {% for tag in page.tags %}
+                        <a href="{{ '/tag/' | append: tag | relative_url }}" class="post-tag">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="post-nav">
+            {% if page.previous %}
+                <a href="{{ page.previous.url | relative_url }}" class="post-nav-link">
+                    <span class="post-nav-icon">←</span>
+                    <span class="post-nav-text">Previous: {{ page.previous.title }}</span>
+                </a>
+            {% endif %}
+
+            {% if page.next %}
+                <a href="{{ page.next.url | relative_url }}" class="post-nav-link">
+                    <span class="post-nav-text">Next: {{ page.next.title }}</span>
+                    <span class="post-nav-icon">→</span>
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="post-share">
+            <h3>Share this post:</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" class="share-button" target="_blank">Twitter</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" class="share-button" target="_blank">Facebook</a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" class="share-button" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</article>
                 <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
                 {% if page.image_caption %}
                     <p class="image-caption">{{ page.image_caption }}</p>

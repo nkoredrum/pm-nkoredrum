@@ -28,6 +28,30 @@ defaults:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - vendor
+  - README.md
+  - .gitignore
+  - .bundle
+  - .idea
+  - .vscode
+  - __pycache__
+  - .forestry
+  - netlify.toml
+  - compile-css.ps1
+defaults:
+  - scope:
+      path: "" # an empty string means all files
+    values:
+      layout: "default"
+  - scope:
+      path: "pages" # path relative to the source directory
+    values:
+      layout: "home"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
   - node_modules
   - vendor
   - README.md
